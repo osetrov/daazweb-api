@@ -1,12 +1,12 @@
 module DaazwebApi
   class Request
-    attr_accessor :access_token, :timeout, :open_timeout, :proxy, :ssl_options, :faraday_adapter, :symbolize_keys,
+    attr_accessor :access_token, :timeout, :open_timeout, :proxy, :faraday_adapter, :symbolize_keys,
                   :debug, :logger, :test
 
     DEFAULT_TIMEOUT = 60
     DEFAULT_OPEN_TIMEOUT = 60
 
-    def initialize(access_token: nil, timeout: nil, open_timeout: nil, proxy: nil, ssl_options: nil,
+    def initialize(access_token: nil, timeout: nil, open_timeout: nil, proxy: nil,
                    faraday_adapter: nil, symbolize_keys: false, debug: false, logger: nil, test: false)
 
       @path_parts = []
@@ -14,7 +14,6 @@ module DaazwebApi
       @timeout = timeout || self.class.timeout || DEFAULT_TIMEOUT
       @open_timeout = open_timeout || self.class.open_timeout || DEFAULT_OPEN_TIMEOUT
       @proxy = proxy || self.class.proxy || ENV['DAAZWEB_API_PROXY']
-      @ssl_options = ssl_options || self.class.ssl_options || OpenSSL::SSL::TLS1_2_VERSION
       @faraday_adapter = faraday_adapter || self.class.faraday_adapter || Faraday.default_adapter
       @symbolize_keys = symbolize_keys || self.class.symbolize_keys || false
       @debug = debug || self.class.debug || false
@@ -76,13 +75,13 @@ module DaazwebApi
     end
 
     class << self
-      attr_accessor :access_token, :timeout, :open_timeout, :proxy, :ssl_options, :faraday_adapter, :symbolize_keys,
+      attr_accessor :access_token, :timeout, :open_timeout, :proxy, :faraday_adapter, :symbolize_keys,
                     :debug, :logger, :test
 
       def method_missing(sym, *args, &block)
         new(access_token: self.access_token,
             timeout: self.timeout, open_timeout: self.open_timeout, faraday_adapter: self.faraday_adapter,
-            symbolize_keys: self.symbolize_keys, debug: self.debug, proxy: self.proxy, ssl_options: self.ssl_options,
+            symbolize_keys: self.symbolize_keys, debug: self.debug, proxy: self.proxy,
             logger: self.logger,
             test: self.test).send(sym, *args, &block)
       end

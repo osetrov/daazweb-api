@@ -50,10 +50,6 @@ module DaazwebApi
       @request_builder.proxy
     end
 
-    def ssl_options
-      @request_builder.ssl_options
-    end
-
     def adapter
       @request_builder.faraday_adapter
     end
@@ -107,8 +103,7 @@ module DaazwebApi
     end
 
     def rest_client
-      client = Faraday.new(self.api_url, proxy: self.proxy,
-                           ssl: { version: self.ssl_options }) do |faraday|
+      client = Faraday.new(self.api_url, proxy: self.proxy) do |faraday|
         faraday.response :raise_error
         faraday.adapter adapter
         if @request_builder.debug
