@@ -22,7 +22,9 @@ module DaazwebApi
     end
 
     def method_missing(method, *args)
-      @path_parts << method.to_s.camelize(:lower).downcase
+      p = method.to_s.split('_').collect(&:capitalize).join
+      p[0] = p[0].to_s.downcase
+      @path_parts << p
       @path_parts << args if args.length > 0
       @path_parts.flatten!
       self
