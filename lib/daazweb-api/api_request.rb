@@ -139,7 +139,7 @@ module DaazwebApi
     end
 
     def api_url
-      base_api_url + @request_builder.path
+      base_api_url + @request_builder.path + "/"
     end
 
     def base_api_url
