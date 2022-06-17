@@ -1,0 +1,8 @@
+defaults: &defaults
+  API_TOKEN: ""
+production:
+  <<: *defaults
+development:
+  <<: *defaults
+test:
+  <<: *defaults
