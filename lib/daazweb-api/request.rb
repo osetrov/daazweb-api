@@ -22,7 +22,7 @@ module DaazwebApi
     end
 
     def method_missing(method, *args)
-      @path_parts << method.to_s.gsub("_", "-").downcase
+      @path_parts << method.to_s.camelize(:lower).downcase
       @path_parts << args if args.length > 0
       @path_parts.flatten!
       self

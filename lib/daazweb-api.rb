@@ -8,7 +8,7 @@ require 'daazweb-api/response'
 
 module DaazwebApi
 
-  API_ENDPOINT = "https://daazweb.space/api/"
+  API_ENDPOINT = "https://daazweb.space"
 
   class << self
     def setup
