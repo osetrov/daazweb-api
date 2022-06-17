@@ -92,6 +92,7 @@ module DaazwebApi
     def configure_request(request: nil, params: nil, headers: nil, body: nil)
       if request
         request.params.merge!(params) if params
+        request.headers = {}
         request.headers['Content-Type'] = 'application/json'
         request.headers['Authorization'] = "Bearer #{self.access_token}"
         request.headers['User-Agent'] = "DaazwebApi/#{DaazwebApi::VERSION} Ruby gem"
