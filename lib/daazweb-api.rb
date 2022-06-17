@@ -1,4 +1,5 @@
 require 'faraday'
+require 'multi_json'
 require 'daazweb-api/version'
 require 'daazweb-api/daazweb_api_error'
 require 'daazweb-api/request'

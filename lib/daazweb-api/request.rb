@@ -14,7 +14,7 @@ module DaazwebApi
       @timeout = timeout || self.class.timeout || DEFAULT_TIMEOUT
       @open_timeout = open_timeout || self.class.open_timeout || DEFAULT_OPEN_TIMEOUT
       @proxy = proxy || self.class.proxy || ENV['DAAZWEB_API_PROXY']
-      @ssl_options = ssl_options || self.class.ssl_options || { version: "TLSv1_2" }
+      @ssl_options = ssl_options || self.class.ssl_options || OpenSSL::SSL::TLS1_2_VERSION
       @faraday_adapter = faraday_adapter || self.class.faraday_adapter || Faraday.default_adapter
       @symbolize_keys = symbolize_keys || self.class.symbolize_keys || false
       @debug = debug || self.class.debug || false
