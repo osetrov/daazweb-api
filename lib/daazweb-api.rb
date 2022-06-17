@@ -8,7 +8,7 @@ require 'daazweb-api/response'
 
 module DaazwebApi
 
-  API_ENDPOINT = "https://daazweb.com"
+  API_ENDPOINT = "https://bitconce.com"
 
   class << self
     def setup
