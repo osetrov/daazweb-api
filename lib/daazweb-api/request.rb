@@ -46,14 +46,14 @@ module DaazwebApi
       @path_parts.join('/')
     end
 
-    def create(params: nil, headers: nil, body: {}, suffix: 'create')
-      APIRequest.new(builder: self).post(params: params, headers: headers, suffix: suffix, body: body)
+    def create(params: nil, headers: nil, body: {})
+      APIRequest.new(builder: self).post(params: params, headers: headers, body: body)
     ensure
       reset
     end
 
     def update(params: nil, headers: nil, body: {})
-      APIRequest.new(builder: self).post(params: params, headers: headers, suffix: 'edit', body: body)
+      APIRequest.new(builder: self).post(params: params, headers: headers, body: body)
     ensure
       reset
     end
@@ -65,7 +65,7 @@ module DaazwebApi
     end
 
     def delete(params: nil, headers: nil, body: {})
-      APIRequest.new(builder: self).post(params: params, headers: headers, body: {}, suffix: 'delete')
+      APIRequest.new(builder: self).post(params: params, headers: headers, body: {})
     ensure
       reset
     end
