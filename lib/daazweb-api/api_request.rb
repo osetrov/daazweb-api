@@ -93,11 +93,11 @@ module DaazwebApi
       if request
         request.params.merge!(params) if params
         request.headers = {}
-        request.headers['Content-Type'] = 'application/json'
+        request.headers['Content-Type'] = 'application/x-www-form-urlencoded'
         request.headers['Authorization'] = "Bearer #{self.access_token}"
         request.headers['User-Agent'] = "DaazwebApi/#{DaazwebApi::VERSION} Ruby gem"
         request.headers.merge!(headers) if headers
-        request.body = MultiJson.dump(body) if body
+        request.body = body.try(:to_query)
         request.options.timeout = self.timeout
         request.options.open_timeout = self.open_timeout
       end
